@@ -80,7 +80,7 @@ Swagger UI: [https://localhost:7218/swagger/index.html](https://localhost:7218/s
 
 - Service overview  
 - Running instructions  
-- Database in-memory setup  
+- EndPoint functionalty  
 - Docker commands specific to that service  
 
 ---
@@ -226,6 +226,6 @@ EventService-Api\tests\EventService.Infrastructure.tests\Repository\EventReposit
    - Business logic distribution is minimal
    - Not all implemented features (e.g., Fluent Validation, AutoMapper, Structured Logging, Authorization, Refit clients, etc.) are applied everywhere across every endpoint
    - The goal is to demonstrate how these techniques can be used in a real solution.
-   - Where relevant feature usage is implemented, source file links are provided above for easy reference in "Security & Architecture Features"
+   - Where relevant feature usage is implemented, source file links are provided above for easy reference in **Security & Architecture Features**
 
 
