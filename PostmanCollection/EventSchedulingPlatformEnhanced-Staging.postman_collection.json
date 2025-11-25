@@ -1,0 +1,880 @@
+{
+	"info": {
+		"_postman_id": "1646fde7-2a1a-490c-a5ce-a149cb359bca",
+		"name": "EventSchedulingPlatformEnhanced-Staging",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9004488",
+		"_collection_link": "https://solar-robot-402114.postman.co/workspace/Team-Workspace~a2fedce4-049a-4ad4-83a8-0e20882ea95d/collection/9004488-1646fde7-2a1a-490c-a5ce-a149cb359bca?action=share&source=collection_link&creator=9004488"
+	},
+	"item": [
+		{
+			"name": "AccountService.Api",
+			"item": [
+				{
+					"name": "set-role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8005/api/v1/account/set-role?userName=string&role=Admin",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8005",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"set-role"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": "string"
+								},
+								{
+									"key": "role",
+									"value": "Admin"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sample1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8005/api/v1/account/set-role?userName=string&role=Admin",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8005",
+									"path": [
+										"api",
+										"v1",
+										"account",
+										"set-role"
+									],
+									"query": [
+										{
+											"key": "userName",
+											"value": "string"
+										},
+										{
+											"key": "role",
+											"value": "Admin"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Nov 2025 08:50:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "api-supported-versions",
+									"value": "1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userName\": \"string\",\n    \"newRole\": \"Admin\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"admin\",\r\n  \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8005/api/v1/account/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8005",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sample1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userName\": \"admin\",\r\n  \"password\": \"admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:8005/api/v1/account/login",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8005",
+									"path": [
+										"api",
+										"v1",
+										"account",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Nov 2025 11:15:53 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "api-supported-versions",
+									"value": "1.0"
+								}
+							],
+							"cookie": [],
+							"body": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3OGNmNWY0OC0wNmYyLTQ5YmEtOGVkOC0zNGQ4M2IxYjljMzUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc2NDA3NjU1MywiaXNzIjoiQWNjb3VudFNlcnZpY2UifQ.Q8icLYC2Y0q0haLwkAcOrUVYKmZSoYF16zVnIquACTY"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"string\",\r\n  \"password\": \"string\",\r\n  \"email\": \"test@test.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8005/api/v1/account/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8005",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sample1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userName\": \"string\",\r\n  \"password\": \"string\",\r\n  \"email\": \"test@test.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:8005/api/v1/account/register",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8005",
+									"path": [
+										"api",
+										"v1",
+										"account",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Nov 2025 11:16:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "api-supported-versions",
+									"value": "1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": \"279fdcd6-b2ae-42b0-9379-170ac5a8fa63\",\n    \"userName\": \"string\",\n    \"userEmail\": \"test@test.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getuser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8005/api/v1/account/368e19ba-cfa4-4d7d-bc62-2884be4ac8b0",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8005",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"368e19ba-cfa4-4d7d-bc62-2884be4ac8b0"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sample1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8005/api/v1/account/368e19ba-cfa4-4d7d-bc62-2884be4ac8b0",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8005",
+									"path": [
+										"api",
+										"v1",
+										"account",
+										"368e19ba-cfa4-4d7d-bc62-2884be4ac8b0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Nov 2025 09:24:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "api-supported-versions",
+									"value": "1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": \"368e19ba-cfa4-4d7d-bc62-2884be4ac8b0\",\n    \"userName\": \"string\",\n    \"userEmail\": \"test@test.com\"\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "EventService.Api",
+			"item": [
+				{
+					"name": "create-event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"string\",\r\n  \"location\": \"string\",\r\n  \"start\": \"2025-11-26T07:43:24.306Z\",\r\n  \"end\": \"2025-11-27T07:43:24.306Z\",\r\n  \"userId\": \"306103ad-04a5-4f67-9427-9641de3239c4\",\r\n  \"categoryId\": \"11111111-1111-1111-1111-111111111111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:9005/api/v1/event",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "9005",
+							"path": [
+								"api",
+								"v1",
+								"event"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sample1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"string\",\r\n  \"location\": \"string\",\r\n  \"start\": \"2025-11-26T07:43:24.306Z\",\r\n  \"end\": \"2025-11-27T07:43:24.306Z\",\r\n  \"userId\": \"279fdcd6-b2ae-42b0-9379-170ac5a8fa63\",\r\n  \"categoryId\": \"11111111-1111-1111-1111-111111111111\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:9005/api/v1/event",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "9005",
+									"path": [
+										"api",
+										"v1",
+										"event"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Nov 2025 11:16:50 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Location",
+									"value": "https://localhost:9005/api/v1/event/bb9824e4-449d-4090-8287-314b446272e7"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "api-supported-versions",
+									"value": "1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"bb9824e4-449d-4090-8287-314b446272e7\",\n    \"title\": \"string\",\n    \"location\": \"string\",\n    \"start\": \"2025-11-26T07:43:24.306Z\",\n    \"end\": \"2025-11-27T07:43:24.306Z\",\n    \"userId\": \"279fdcd6-b2ae-42b0-9379-170ac5a8fa63\",\n    \"categoryId\": \"11111111-1111-1111-1111-111111111111\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get-event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:9005/api/v1/event/fe18e928-18d8-401a-aa6c-a227e15791d1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "9005",
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"fe18e928-18d8-401a-aa6c-a227e15791d1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sample",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:9005/api/v1/event/fe18e928-18d8-401a-aa6c-a227e15791d1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "9005",
+									"path": [
+										"api",
+										"v1",
+										"event",
+										"fe18e928-18d8-401a-aa6c-a227e15791d1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Nov 2025 09:46:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "api-supported-versions",
+									"value": "1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"fe18e928-18d8-401a-aa6c-a227e15791d1\",\n    \"title\": \"string1\",\n    \"location\": \"string\",\n    \"start\": \"2025-11-26T07:43:24.306Z\",\n    \"end\": \"2025-11-27T07:43:24.306Z\",\n    \"userId\": \"306103ad-04a5-4f67-9427-9641de3239c4\",\n    \"categoryId\": \"11111111-1111-1111-1111-111111111111\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update-event",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"string1\",\r\n    \"location\": \"string\",\r\n    \"start\": \"2025-11-26T07:43:24.306Z\",\r\n    \"end\": \"2025-11-27T07:43:24.306Z\",\r\n    \"userId\": \"306103ad-04a5-4f67-9427-9641de3239c4\",\r\n    \"categoryId\": \"11111111-1111-1111-1111-111111111111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:9005/api/v1/event/fe18e928-18d8-401a-aa6c-a227e15791d1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "9005",
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"fe18e928-18d8-401a-aa6c-a227e15791d1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sample1",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"string1\",\r\n    \"location\": \"string\",\r\n    \"start\": \"2025-11-26T07:43:24.306Z\",\r\n    \"end\": \"2025-11-27T07:43:24.306Z\",\r\n    \"userId\": \"306103ad-04a5-4f67-9427-9641de3239c4\",\r\n    \"categoryId\": \"11111111-1111-1111-1111-111111111111\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:9005/api/v1/event/fe18e928-18d8-401a-aa6c-a227e15791d1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "9005",
+									"path": [
+										"api",
+										"v1",
+										"event",
+										"fe18e928-18d8-401a-aa6c-a227e15791d1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Nov 2025 09:45:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "api-supported-versions",
+									"value": "1.0"
+								}
+							],
+							"cookie": [],
+							"body": "true"
+						}
+					]
+				},
+				{
+					"name": "delete-event",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:9005/api/v1/event/fe18e928-18d8-401a-aa6c-a227e15791d1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "9005",
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"fe18e928-18d8-401a-aa6c-a227e15791d1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sample1",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:9005/api/v1/event/fe18e928-18d8-401a-aa6c-a227e15791d1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "9005",
+									"path": [
+										"api",
+										"v1",
+										"event",
+										"fe18e928-18d8-401a-aa6c-a227e15791d1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Nov 2025 09:46:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "api-supported-versions",
+									"value": "1.0"
+								}
+							],
+							"cookie": [],
+							"body": "true"
+						}
+					]
+				},
+				{
+					"name": "search-event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:9005/api/v1/event/search?from=2025-11-24&to=2025-11-28&location=string&pageNumber=1&pageSize=10",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "9005",
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"search"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2025-11-24"
+								},
+								{
+									"key": "to",
+									"value": "2025-11-28"
+								},
+								{
+									"key": "location",
+									"value": "string"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sample1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:9005/api/v1/event/search?from=2025-11-24&to=2025-11-28&location=string&pageNumber=1&pageSize=10",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "9005",
+									"path": [
+										"api",
+										"v1",
+										"event",
+										"search"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "2025-11-24"
+										},
+										{
+											"key": "to",
+											"value": "2025-11-28"
+										},
+										{
+											"key": "location",
+											"value": "string"
+										},
+										{
+											"key": "pageNumber",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Nov 2025 09:49:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "api-supported-versions",
+									"value": "1.0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"total\": 1,\n    \"pageNumber\": 1,\n    \"pageSize\": 10,\n    \"items\": [\n        {\n            \"id\": \"49d1fd98-184c-406c-869f-95e1b2077758\",\n            \"title\": \"string\",\n            \"location\": \"string\",\n            \"start\": \"2025-11-26T07:43:24.306Z\",\n            \"end\": \"2025-11-27T07:43:24.306Z\",\n            \"userId\": \"306103ad-04a5-4f67-9427-9641de3239c4\",\n            \"categoryId\": \"11111111-1111-1111-1111-111111111111\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

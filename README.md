@@ -39,7 +39,7 @@ Run using Visual Studio, CLI or Docker.
 
 ---
 
-## 🚀 Swagger API Documentation (LocalDebug,Docker-Staging)
+## 🚀 Swagger API Documentation (LocalDebug,DockerStagingMode)
 
 Below are the Swagger endpoints available during local debugging:
 
@@ -110,7 +110,21 @@ Inside Docker Network (Service-to-Service):
 - Docker commands specific to that service  
 
 ---
+## 🧪 API Testing (Postman Collection)
 
+A Postman Collection is included in the repository to easily test all API endpoints for both microservices.
+
+### 📁 Path
+```
+EventSchedulingPlatformEnhanced\PostmanCollection\EventSchedulingPlatformEnhanced-Staging.postman_collection.json
+```
+### 📝 Included Requests:
+| Service | Module | Endpoints Included |
+|--------|--------|------------------|
+| Account Service API | account | Register, Login,Set Role, Get Users |
+| Event Service API | event | Create Event, Get Event,Update Event,Delete Event, Search Events |
+
+---
 ## 🔐 Security & Architecture Features
 
 ### 1️⃣ Password Hashing – PBKDF2
