@@ -34,23 +34,32 @@ EventSchedulingPlatformEnhanced/
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)  
 - [DockerDesktop](https://www.docker.com/)
 
+- ### 🧪 Local Execution
+Run using Visual Studio, CLI or Docker.
 
 ---
 
-## Running Services Locally
+## 🚀 Swagger API Documentation (LocalDebug,Docker-Staging)
 
-### 1. AccountService-Api
+Below are the Swagger endpoints available during local debugging:
 
+### 📌 Account Service - Swagger Endpoints 
 
-Swagger UI: [https://localhost:7174/swagger/index.html](https://localhost:7174/swagger/index.html)
+| Protocol | Swagger UI | Swagger JSON |
+|---------|------------|--------------|
+| **HTTP** | [http://localhost:8004/account/swagger/index.html](http://localhost:8004/account/swagger/index.html) | [http://localhost:8004/account/swagger/v1/swagger.json](http://localhost:8004/account/swagger/v1/swagger.json) |
+| **HTTPS** | [https://localhost:8005/account/swagger/index.html](https://localhost:8005/account/swagger/index.html) | [https://localhost:8005/account/swagger/v1/swagger.json](https://localhost:8005/account/swagger/v1/swagger.json) |
 
----
+> Note: Swagger route is customized using `c.RoutePrefix = "account/swagger"` to align with service namespace and API versioning structure.
 
-### 2. EventService-Api
+### 📌 Event Service - Swagger Endpoints
 
+| Protocol | Swagger UI | Swagger JSON |
+|---------|------------|--------------|
+| **HTTP** | [http://localhost:9004/event/swagger/index.html](http://localhost:9004/event/swagger/index.html) | [http://localhost:9004/event/swagger/v1/swagger.json](http://localhost:9004/event/swagger/v1/swagger.json) |
+| **HTTPS** | [https://localhost:9005/event/swagger/index.html](https://localhost:9005/event/swagger/index.html) | [https://localhost:9005/event/swagger/v1/swagger.json](https://localhost:9005/event/swagger/v1/swagger.json) |
 
-
-Swagger UI: [https://localhost:7218/swagger/index.html](https://localhost:7218/swagger/index.html)
+> Note: Swagger UI route is customized using `c.RoutePrefix = "event/swagger"` to match service namespace and API versioning structure.
 
 ---
 
@@ -58,6 +67,23 @@ Swagger UI: [https://localhost:7218/swagger/index.html](https://localhost:7218/s
 
 - Each microservice is independent and communicates via REST APIs.
 - 'EventService-Api' call 'AccountService-Api` endpoints to validate users before creating events.
+
+- ## 📦 Docker Container Endpoints
+In Docker its deployed in two environment Staging(Swagger access) and Production
+
+Inside Docker Network (Service-to-Service):
+> Make sure containers are on the same Docker network (e.g., `microservices`).
+
+- http://accountserviceapi_stg:8080 
+- https://accountserviceapi_stg:8081 
+- http://eventserviceapi_stg:8080 
+- https://eventserviceapi_stg:8081 
+---
+- http://accountserviceapi_prd:8080 
+- https://accountserviceapi_prd:8081 
+- http://eventserviceapi_prd:8080 
+- https://eventserviceapi_prd:8081
+
 
 ---
 
@@ -161,7 +187,9 @@ AccountService-Api\src\AccountService.Core\Services\RegisterService.cs //Registe
 ```
 
 ### 8️⃣ Docker Deployment
-- Both microservices containerized & run via Docker Desktop  
+- Both microservices containerized & run via Docker Desktop 
+- Detailed instruction how to setup and run from docker has been mentioned in respective Servise README
+
 📌 Dockerfile locations:
 ```
 AccountService-Api\docker\Dockerfile
@@ -181,7 +209,7 @@ docker run -d --name eventserviceapi_dev `
   eventserviceapi:dev
 ```
 
-### 9️⃣ Docker Deployment
+### 9️⃣ API Versioning
 - Implemented API Versioning to support evolution of services without breaking existing clients
 📌 Configuration + Usage:
 ```

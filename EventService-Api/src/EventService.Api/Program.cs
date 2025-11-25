@@ -138,13 +138,6 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-app.UseSwagger(c => c.RouteTemplate = "event/swagger/{documentName}/swagger.json");
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/event/swagger/v1/swagger.json", "Event Service API v1");
-    c.RoutePrefix = "event/swagger";
-});
-
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<EventDbContext>();
@@ -155,8 +148,12 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwagger(c => c.RouteTemplate = "event/swagger/{documentName}/swagger.json");
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/event/swagger/v1/swagger.json", "Event Service API v1");
+        c.RoutePrefix = "event/swagger";
+    });
 }
 
 app.UseHttpsRedirection();
