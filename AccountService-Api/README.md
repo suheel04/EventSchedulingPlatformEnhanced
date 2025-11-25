@@ -66,24 +66,70 @@ AccountService-Api/tests/
 ## 🐋 Docker Deployment
 ### 🧩 Prerequisites
 
-✓ Docker Desktop installed
-✓ Certificate available for HTTPS 
+### 1️⃣ Install Docker Desktop  
+Make sure Docker Desktop is installed and running.
+
+### 2️⃣ Create & Trust Development Certificate (only once)
+
+Create folder **C:\certs** and export a dev certificate:
+
+```powershell
+dotnet dev-certs https -ep C:\certs\devcert.pfx -p DevP@ssw0rd1
+dotnet dev-certs https --trust
+Get-ChildItem -Force C:\certs | Format-Table Name,Length,Mode,Attributes -AutoSize
+Get-Item C:\certs\devcert.pfx | Format-List Name,Length,Mode,Attributes 
+
+```
+ ### 3️⃣ Create Docker Network (only once)
+ ```
+ docker network create microservices
+ ```
 
 ### 🔨 Build Image
 ```
 docker build --no-cache -f docker/Dockerfile -t accountserviceapi:prd .
 ```
 ### ▶️ Run Container
+🔹 Production Mode
 ```
 docker run -d --name accountserviceapi_prd `
-  -p 9004:8080 `
-  -p 9005:8081 `
+  --network microservices `
+  -p 8001:8080 `
+  -p 8002:8081 `
   -v "C:\certs:/https:ro" `
   -e ASPNETCORE_ENVIRONMENT=Production `
   -e ASPNETCORE_URLS="http://0.0.0.0:8080;https://0.0.0.0:8081" `
   -e ASPNETCORE_Kestrel__Certificates__Default__Path=/https/devcert.pfx `
   -e ASPNETCORE_Kestrel__Certificates__Default__Password="DevP@ssw0rd1" `
   accountserviceapi:prd
+
+```
+🔹 Staging Mode (For Swagger Testing)
+```
+docker run -d --name accountserviceapi_stg `
+  --network microservices `
+  -p 8004:8080 `
+  -p 8005:8081 `
+  -v "C:\certs:/https:ro" `
+  -e ASPNETCORE_ENVIRONMENT=Staging `
+  -e ASPNETCORE_URLS="http://0.0.0.0:8080;https://0.0.0.0:8081" `
+  -e ASPNETCORE_Kestrel__Certificates__Default__Path=/https/devcert.pfx `
+  -e ASPNETCORE_Kestrel__Certificates__Default__Password="DevP@ssw0rd1" `
+  accountserviceapi:prd
+
+```
+### 📘 Swagger Endpoints
+| Protocol  | Swagger UI                                                                                             | Swagger JSON                                                                                                     |
+| --------- | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| **HTTP**  | [http://localhost:8004/account/swagger/index.html](http://localhost:8004/account/swagger/index.html)   | [http://localhost:8004/account/swagger/v1/swagger.json](http://localhost:8004/account/swagger/v1/swagger.json)   |
+| **HTTPS** | [https://localhost:8005/account/swagger/index.html](https://localhost:8005/account/swagger/index.html) | [https://localhost:8005/account/swagger/v1/swagger.json](https://localhost:8005/account/swagger/v1/swagger.json) |
+
+### 🛠 Diagnostics
+```
+docker ps
+docker logs accountserviceapi_prd
+docker logs accountserviceapi_stg
+
 ```
 ---
 
