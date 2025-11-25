@@ -30,13 +30,14 @@ namespace AccountService.Core.Services
 
             if (user == null) throw new NotFoundException("User not found");
 
+            user.Role = role;
             await _userRepository.UpdateUserAsync(user);
 
             //TBD:Use mapper here.
             return new SetRoleResponseDto
             {
                 UserName = user.UserName,
-                NewRole = role
+                NewRole = user.Role
             };
         }
 
