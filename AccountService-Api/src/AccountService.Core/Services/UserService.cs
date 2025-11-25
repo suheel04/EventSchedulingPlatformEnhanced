@@ -36,7 +36,7 @@ namespace AccountService.Core.Services
             return new SetRoleResponseDto
             {
                 UserName = user.UserName,
-                NewRole = user.Role
+                NewRole = role
             };
         }
 

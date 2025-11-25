@@ -82,9 +82,15 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Account Service API",
+        Version = "v1"
+    });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -93,7 +99,6 @@ builder.Services.AddSwaggerGen(c =>
         Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
     });
-
     c.AddSecurityRequirement(new OpenApiSecurityRequirement {
     {
         new OpenApiSecurityScheme
@@ -108,8 +113,15 @@ builder.Services.AddSwaggerGen(c =>
     }});
 });
 
-
 var app = builder.Build();
+
+app.UseSwagger(c => c.RouteTemplate = "account/swagger/{documentName}/swagger.json");
+
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/account/swagger/v1/swagger.json", "Account Service API v1");
+    c.RoutePrefix = "account/swagger";
+});
 
 // Seed a default admin user
 using (var scope = app.Services.CreateScope())
