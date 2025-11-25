@@ -25,6 +25,7 @@ builder.Services.AddScoped<IValidator<EventCreateDto>, EventCreateDtoValidator>(
 builder.Services.AddAutoMapper(typeof(EventProfile));
 
 //RefitClient
+var accountServiceBaseUrl = builder.Configuration["Services:AccountServiceBaseUrl"];
 builder.Services.AddRefitClient<IAccountApi>()
     .ConfigureHttpClient((sp, c) =>
     {
@@ -36,8 +37,17 @@ builder.Services.AddRefitClient<IAccountApi>()
                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.Split(" ")[1]);
         }
 
-        c.BaseAddress = new Uri("https://localhost:7174");// URL of Account API
+        c.BaseAddress = new Uri(accountServiceBaseUrl!); 
+    }).ConfigurePrimaryHttpMessageHandler(() =>
+    {
+        return new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback =
+                (message, cert, chain, errors) => true 
+        };
     });
+
+
 
 builder.Services.AddHttpContextAccessor();
 //Read Serilog configuration from appsettings.json
@@ -99,6 +109,11 @@ builder.Services.AddAuthorization();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Event Service API",
+        Version = "v1"
+    });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -107,7 +122,6 @@ builder.Services.AddSwaggerGen(c =>
         Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
     });
-
     c.AddSecurityRequirement(new OpenApiSecurityRequirement {
     {
         new OpenApiSecurityScheme
@@ -124,6 +138,13 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+app.UseSwagger(c => c.RouteTemplate = "event/swagger/{documentName}/swagger.json");
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/event/swagger/v1/swagger.json", "Event Service API v1");
+    c.RoutePrefix = "event/swagger";
+});
+
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<EventDbContext>();
@@ -132,7 +153,7 @@ using (var scope = app.Services.CreateScope())
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
