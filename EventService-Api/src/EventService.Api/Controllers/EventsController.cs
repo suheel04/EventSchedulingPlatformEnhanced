@@ -84,7 +84,7 @@ namespace EventService.Api.Controllers
             catch (ForbiddenException ex)
             {
                 _logger.LogWarning("Exception Mesage at Event GetById:{Message} StackTrace: {StackTrace}", ex.Message, ex.StackTrace);
-                return Forbid(ex.Message);
+                return StatusCode(StatusCodes.Status403Forbidden, "Don't have access");
             }
             catch (UnauthorizedException ex)
             {
@@ -98,6 +98,11 @@ namespace EventService.Api.Controllers
                 {
                     Errors = ex.Errors
                 });
+            }
+            catch(NotFoundException ex)
+            {
+                _logger.LogWarning("Exception Mesage at Event GetById:{Message} StackTrace: {StackTrace}", ex.Message, ex.StackTrace);
+                return NotFound(new { message = ex.Message });
             }
             catch (Exception ex)
             {
@@ -114,7 +119,7 @@ namespace EventService.Api.Controllers
             {
                 var (loggedInUserId, loggedInUserRole) = GetLoggedInUserInfo();
                 var result = await _eventManagementService.UpdateAsync(id, dto, loggedInUserId, loggedInUserRole);
-                return Ok(result);
+                return NoContent();
             }
             catch (UnauthorizedException ex)
             {
@@ -124,7 +129,12 @@ namespace EventService.Api.Controllers
             catch (ForbiddenException ex)
             {
                 _logger.LogWarning("Exception Mesage at Event Update:{Message} StackTrace: {StackTrace}", ex.Message, ex.StackTrace);
-                return Forbid(ex.Message);
+                return StatusCode(StatusCodes.Status403Forbidden, "Don't have access");
+            }
+            catch (NotFoundException ex)
+            {
+                _logger.LogWarning("Exception Mesage at Event GetById:{Message} StackTrace: {StackTrace}", ex.Message, ex.StackTrace);
+                return NotFound(new { message = ex.Message });
             }
             catch (BadRequestException ex)
             {
@@ -149,7 +159,7 @@ namespace EventService.Api.Controllers
             {
                 var (loggedInUserId, loggedInUserRole) = GetLoggedInUserInfo();
                 var result = await _eventManagementService.DeleteAsync(id, loggedInUserId, loggedInUserRole);
-                return Ok(result);
+                return NoContent();
             }
             catch (UnauthorizedException ex)
             {
@@ -160,6 +170,11 @@ namespace EventService.Api.Controllers
             {
                 _logger.LogWarning("Exception Mesage at Event Delete:{Message} StackTrace: {StackTrace}", ex.Message, ex.StackTrace);
                 return Forbid(ex.Message);
+            }
+            catch (NotFoundException ex)
+            {
+                _logger.LogWarning("Exception Mesage at Event GetById:{Message} StackTrace: {StackTrace}", ex.Message, ex.StackTrace);
+                return NotFound(new { message = ex.Message });
             }
             catch (BadRequestException ex)
             {
