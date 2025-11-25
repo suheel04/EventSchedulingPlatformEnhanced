@@ -1,13 +1,18 @@
-﻿# EventSchedulingPlatformEnhanced
+﻿# ✨ Event Scheduling Platform – Enhanced
 
-This repository contains two microservices for the Event Scheduling Platform:
+A modular microservices-based platform for managing user accounts and scheduling events with secure authentication, API versioning, Docker deployment, and Swagger documentation.
 
-1. **AccountService-Api** - Handles user authentication(Login), registration, role management,userinfo and JWT token generation.  
-2. **EventService-Api** - Manages event creation, updates,get, delete, and search.
+🧩 Microservices Overview
+
+| Service                | Description                                      | Tech            | Swagger                       |
+| ---------------------- | ------------------------------------------------ | --------------- | ----------------------------- |
+| **AccountService-Api** | Authentication (Login), Registration, Roles, JWT | .NET 8, EF Core | `/account/swagger/index.html` |
+| **EventService-Api**   | Event CRUD, Filtering & Search                   | .NET 8, EF Core | `/event/swagger/index.html`   |
+
 
 ---
 
-## Repository Structure
+## 📁 Repository Structure
 ```
 EventSchedulingPlatformEnhanced/
 ├─ AccountService-Api/
@@ -23,10 +28,29 @@ EventSchedulingPlatformEnhanced/
 │  ├─ tests/
 |  ├─ EventService.Api.sln
 │  └─ README.md
-│
+|
+├─ PostmanCollection/
+|
 ├─ README.md  <-- This root file
 |
 ```
+---
+🚀 Features
+
+✔️ API Versioning
+✔️ JWT Authentication + Role-based Access
+✔️ Swagger UI with Custom Route Prefix
+✔️ Docker Multi-Environment Support (Staging | Prod)
+✔️ HTTPS support using local dev cert in Docker
+✔️ Refit-based Inter-service communication
+✔️ Serilog structured logging
+✔️ EF Core with InMemory database
+✔️ Unit testing with Moq & xUnit
+✔️ Secure password hashing
+✔️ Fluent validation
+✔ Sensitive logging hygiene Masking PI data  
+✔ Proper error handling & validation 
+
 ---
 
 ## Prerequisites
