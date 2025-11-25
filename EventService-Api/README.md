@@ -99,6 +99,8 @@ Get-Item C:\certs\devcert.pfx | Format-List Name,Length,Mode,Attributes
  ```
 
 ### 🔨 Build Image
+
+⚠️ Important: Run this command from the service’s solution root folder in your local machine
 ```
 docker build --no-cache -f docker/Dockerfile -t eventserviceapi:prd .
 ```
